@@ -1,0 +1,10 @@
+Alright so you want to color things?
+First of all you will require chrome since I have not yet implemented Firefox etc. (didn't even check if this will be possible)
+launch chrome and open the site chrome://extensions
+there you should see a list of all current extensions. on the top right enable dev mode
+Then a couple buttons should appear.
+Press the button add unpackaged Extension and select the Intermediate folder.
+This will only be possible if you already generated the extension data once using the command -updateBrowser
+after each time you update the extension you will have to reload both the extension and player.
+to reload the extension use crtl+r
+to reload player use f5

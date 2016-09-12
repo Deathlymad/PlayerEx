@@ -1,0 +1,13 @@
+-user *name*						sets the current Player who is using that
+-setColor *name* *colorHex*			sets the Color for a Player
+-removePlayer *name*				removes Player from coloring
+-listPlayers						lists all manipulated Players and their colors
+-loadRepo *path*					will set Destination for external Workspace
+-resetRepo							will set the current Dictionary as the Workspace
+-setBrowser *browserName*			will set extension Type/Gen
+-addMissing *path*					copies data from all unknown Players in current File
+-addBackground *path* |name|		adds a Background, optionally name can be set otherwise filename is used
+-removeBackground *name*			removes a background
+-disableBackground *name*			disables a backlground for next build. WILL NOT BE DELETED
+-updateBrowser						forces Extension Update
+-save								forces saving

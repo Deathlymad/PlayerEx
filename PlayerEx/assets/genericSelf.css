@@ -1,0 +1,17 @@
+span.top-bar--profile-username,
+span.linked--username {
+color: #cccccc !important;
+}
+ 
+a[title=xxxx],
+#page-feed a[href$="xxxx"] .username,
+.browse-media .name a[href$="xxxx"],
+a[href="/xxxx"].browse--card-title,
+a[href="/xxxx"].js-user-popover,
+a[href="/xxxx"].post--info-username,
+a[href="/xxxx"].username,
+a[href="/xxxx"].top-bar--profile-username,
+div.username a[href="/xxxx"],
+span.comment--username a[href="/xxxx"] {
+  color: #cccccc !important;
+}

@@ -1,0 +1,21 @@
+{
+  "manifest_version": 2,
+  "update_url":"http://player.me/Deathlymad",
+  "name": "Player Coloring Extension",
+  "version": "1.0",
+  "description": "This is an extension that makes Player more colorful.",
+  "browser_action": {
+    "default_icon": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://player.me/*"], 
+      
+	  "css": [xxxx]
+    }
+  ],
+  "permissions": [
+    "activeTab",
+    "http://player.me/*"
+  ]
+}
