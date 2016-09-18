@@ -125,6 +125,15 @@ void Session::executeTasks()
 		{
 			_save();
 		}
+		else if (command == "-registerCommand")
+		{
+			std::cout << command + " is currently not implemented" << std::endl;
+		}
+		else if (command == "-test")
+		{
+			_linker.connect();
+			_linker.sendCSS("Hello World");
+		}
 		else
 		{
 			std::cout << "Unknown command: " << command << std::endl;

@@ -3,6 +3,7 @@
 #include <vector>
 
 #include "Player.h"
+#include "ExtensionLinker.h"
 
 #pragma once
 class Session
@@ -32,5 +33,7 @@ private:
 	std::string _user;
 
 	std::queue<std::string> _args;
+
+	ExtensionLinker _linker;
 };
 

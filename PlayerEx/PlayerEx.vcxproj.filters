@@ -24,12 +24,18 @@
     <ClCompile Include="Session.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="ExtensionLinker.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Session.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="ExtensionLinker.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

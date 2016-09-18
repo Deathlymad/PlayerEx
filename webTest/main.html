@@ -1,0 +1,46 @@
+<html>
+	<head>
+		<script>
+			var WebSocketServer = require('ws').Server;
+			
+			
+			var wss = new WebSocketServer({ port: 80 });
+			var expectsCSS = false;
+			var cssArr = {};
+			
+			function writeCSS()
+			{
+				for (arr in cssArr) 
+				{
+					var node = document.createElement('style');
+					node.innerHTML = arr.code;
+					document.body.appendChild(node);
+				}
+			}
+			
+			wss.on('connection', function connection(ws) {
+			 ws.on('message', function incoming(message) {
+				if (message[0] == 'c')
+				{
+					//floowing string will be CSS
+				}
+				else if (message[0] == 'f')
+				{
+					//a file binary wll follow
+				}
+				else if (message[0] == 'r')
+				{
+					//reload all data
+				}
+				else
+				{
+					print('error');
+				}
+				})
+			});
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>
