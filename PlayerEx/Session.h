@@ -1,4 +1,5 @@
 #include <string>
+#include <thread>
 #include <queue>
 #include <vector>
 
@@ -17,15 +18,13 @@ public:
 
 	void executeTasks();
 
+	void generateCSS();
+
 	~Session();
 
 private:
 	void _save();
 	void _load();
-
-	void generateCSS();
-	void generateExtension();
-	void applyExtension();
 
 	std::string popFront();
 
@@ -35,5 +34,6 @@ private:
 	std::queue<std::string> _args;
 
 	ExtensionLinker _linker;
+	std::thread server_handler;
 };
 

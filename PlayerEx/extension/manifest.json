@@ -11,7 +11,7 @@
     {
       "matches": ["https://player.me/*"], 
       
-	  "css": [xxxx]
+	  "js": ["injector.js"]
     }
   ],
   "permissions": [

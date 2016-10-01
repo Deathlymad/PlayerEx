@@ -28,6 +28,11 @@ int main(int argc, char* argv[])
 	Session _RuntimeSession;
 	while (true)
 	{
+		if (!Args.empty() && Args[0] == "-exit")
+		{
+			_RuntimeSession.~Session();
+			break;
+		}
 		_RuntimeSession.parseArgs(Args);
 		_RuntimeSession.executeTasks();
 		Args.clear();

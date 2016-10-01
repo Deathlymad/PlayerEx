@@ -78,11 +78,6 @@ Player::~Player()
 bool Player::operator==(const Player & other)
 {
 	if (_name == other._name)
-	{
-		if (_color == -1 || other._color == -1)
-			return true;
-		else
-			return _color == other._color;
-	}
+		return true;
 	return false;
 }

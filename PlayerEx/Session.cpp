@@ -24,7 +24,7 @@ std::string ArrToFileList(std::vector<Player>& vec, std::string& fileEx)
 }
 
 
-Session::Session()
+Session::Session() : _linker(this), server_handler([this] { _linker.run(); })
 {
 	_load();
 }
@@ -55,6 +55,7 @@ void Session::executeTasks()
 		{
 			std::string name = popFront(),
 						color = popFront();
+			std::transform(name.begin(), name.end(), name.begin(), ::tolower);
 			Player nullPlayer(name);
 			auto pos = std::find(_players.begin(), _players.end(), nullPlayer);
 
@@ -119,7 +120,6 @@ void Session::executeTasks()
 		else if (command == "-updateBrowser")
 		{
 			generateCSS();
-			generateExtension();
 		}
 		else if (command == "-save")
 		{
@@ -131,8 +131,7 @@ void Session::executeTasks()
 		}
 		else if (command == "-test")
 		{
-			_linker.connect();
-			_linker.sendCSS("Hello World");
+
 		}
 		else
 		{
@@ -144,6 +143,9 @@ void Session::executeTasks()
 
 Session::~Session()
 {
+	_linker.~ExtensionLinker();
+	if (server_handler.joinable())
+		server_handler.join();
 	_save();
 }
 
@@ -216,44 +218,18 @@ void Session::generateCSS()
 		ofs.write(result.data(), result.size());
 		ofs.close();
 	}
-}
 
-void Session::generateExtension()
-{
-	std::string str;
-	auto it(_players.begin());
-	while (it != _players.end())
+	std::string result;
+	for (auto it = _players.begin(); it < _players.end(); it++)
 	{
-		str.append((it == _players.begin() ? "\"" : ", \"") + (*it).getName() + ".css\"");
-		it++;
+		Player& player = *it;
+
+		std::ifstream  ifs("intermediates/" + player.getName() + ".css");
+		for (std::string line; std::getline(ifs, line);)
+			result += line;
+		ifs.close();
 	}
-
-	std::string manifest;
-	std::ifstream _manifest("assets/genericManifest.json");
-
-	for (std::string line; std::getline(_manifest, line); )
-		manifest += line + "\n";
-
-	replaceAll(manifest, "xxxx", str);
-
-	std::ofstream  ofs("intermediates/manifest.json");
-	ofs.write(manifest.data(), manifest.size());
-	ofs.close();
-
-	//copies icon, later also background etc
-	std::ifstream  src("assets/icon.png", std::ios::binary);
-	std::ofstream  dst("intermediates/icon.png", std::ios::binary);
-	dst << src.rdbuf();
-
-}
-
-void Session::applyExtension()
-{
-	/*
-	char cCurrentPath[FILENAME_MAX];
-	GetCurrentDir(cCurrentPath, sizeof(cCurrentPath));
-	system((std::string("\"C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe\" --pack-extension=") + std::string(cCurrentPath) + "/intermediates --pack-extension-key= " + std::string(cCurrentPath) + "PlayerEx.pem").c_str());
-	*/
+	_linker.sendCSS("c" + result);
 }
 
 std::string Session::popFront()

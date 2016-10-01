@@ -1,5 +1,6 @@
-// this is for the color of usernames in post
-.theme--light a[href="/xxxx"].post--info-username,
-a[href="/xxxx"].post--info-username {
+span[href="/xxxx"].username,
+a[href="/xxxx"].post--info-username,
+a[href="/xxxx"].post--info-username.js-user-popover,
+a[href="/xxxx"].js-user-popover {
     color: #cccccc !important;
 }

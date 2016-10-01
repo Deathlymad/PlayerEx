@@ -1,5 +1,5 @@
 #include <fstream>
-#include <string>
+#include <string.h>
 
 #pragma once
 class Player

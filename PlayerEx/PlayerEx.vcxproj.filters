@@ -44,4 +44,12 @@
       <Filter>Ressourcendateien</Filter>
     </Text>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\generic.css">
+      <Filter>Ressourcendateien</Filter>
+    </None>
+    <None Include="assets\genericSelf.css">
+      <Filter>Ressourcendateien</Filter>
+    </None>
+  </ItemGroup>
 </Project>
